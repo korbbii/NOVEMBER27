@@ -1,0 +1,158 @@
+/* General layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+}
+
+main {
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Flex Container for Question Form and Questionnaire Table */
+.form-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Question Form */
+.question-form {
+    background-color: #e8f4f8;
+    padding: 25px;
+    border-radius: 5px;
+    margin-right: 20px; /* Space between form and table */
+    flex: 1; /* Allow form to take available space */
+}
+
+.question-form h3 {
+    font-size: 1.2em;
+}
+
+.form-element {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Button Styles */
+.add-btn, .cancel-btn, .save-order {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #f44336;
+}
+
+.add-btn:hover, .save-order:hover {
+    background-color: #3a883c;
+}
+
+.cancel-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Questionnaire Table */
+.questionnaire-table {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    flex: 2; /* Allow table to take more space */
+}
+
+.legend p {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.criteria-section h4 {
+    background-color: #6c757d;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.question-row {
+    display: flex;
+    align-items: center; /* Align question text and ratings vertically */
+    justify-content: space-between; /* Space out elements */
+    padding: 10px 15px;
+    margin: 0; /* Remove right margin */
+}
+
+.rating-options {
+    display: flex; /* Align rating options in a row */
+    align-items: center; /* Center vertically */
+    margin-left: 15rem;
+    padding: 10px;
+}
+
+.rating-options label {
+    margin: 0 5px; /* Space between labels */
+}
+
+.feedback-section {
+    margin-top: 20px;
+}
+
+.feedback-section h3 {
+    font-size: 1.2em;
+}
+
+/* Adjusting the feedback textarea */
+.feedback-section textarea {
+    width: calc(100% - 20px); /* Ensure it fits within the container */
+    padding: 50px; 
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Submit Feedback Button */
+.feedback-section .add-btn {
+    margin-top: 10px;   
+}
+
+/* Add Responsiveness for Feedback Section */
+@media (max-width: 768px) {
+    .feedback-section {
+        margin-top: 20px; /* Add spacing on smaller screens */
+    }
+}
+
+/* Action Icons */
+.action-icons {
+    display: flex;
+    flex-direction: column; /* Stack icons vertically */
+    align-items: center; /* Center align the icons */
+    margin-right: 10px; /* Reduced space between icons and question text */
+}
+
+.icon {
+    cursor: pointer; /* Change cursor to pointer for clickable icons */
+    font-size: 18px; /* Adjust icon size */
+    color: #666; /* Icon color */
+    margin-bottom: 5px; /* Space between icons */
+}
+
+.icon:hover {
+    color: #333; /* Change color on hover for better visibility */
+}
+
+/* Modal Background and Content (if applicable) */
+/* Add modal styles here if needed */

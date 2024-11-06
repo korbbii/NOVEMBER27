@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Questionnaire</title>
+  <link rel="stylesheet" href="/css/questionnaire.css">
+</head>
+<body>
+    <%- include('partials/sidebar') %>
+  <div class="container">
+    <h2>Manage Questionnaire</h2>
+
+    <!-- Flex Container for Question Form and Questionnaire Table -->
+    <div class="form-container">
+      <!-- Question Form -->
+      <div class="question-form">
+        <h3>Question Form</h3>
+        <select id="criteriaSelect" class="form-element">
+          <option value="" disabled selected>Please select here</option>
+          <% criteria.forEach(function(criterion) { %>
+            <option value="<%= criterion.id %>"><%= criterion.name %></option>
+          <% }) %>
+        </select>
+
+        <textarea id="questionInput" class="form-element" placeholder="Question"></textarea>
+        <button id="saveButton" class="add-btn">Save</button>
+        <button id="cancelButton" class="cancel-btn">Cancel</button>
+      </div>
+
+      <!-- Evaluation Questionnaire Table -->
+      <div class="questionnaire-table">
+        <h3>Evaluation Questionnaire for Academic <%= academicYear %></h3>
+        <div class="legend">
+          <p>Rating Legend</p>
+          <p>5 = Strongly Agree, 4 = Agree, 3 = Uncertain, 2 = Disagree, 1 = Strongly Disagree</p>
+        </div>
+
+        <!-- Criteria and Questions -->
+        <% criteria.forEach(function(criterion) { %>
+          <div class="criteria-section">
+            <h4><%= criterion.name %></h4>
+            <% criterion.questions.forEach(function(question) { %>
+              <div class="question-row">
+                <div class="action-icons">
+                  <!-- Icons for editing, deleting, and dragging -->
+                  <span class="icon edit-icon" title="Edit">&#x270E;</span> <!-- Pencil icon -->
+                  <span class="icon delete-icon" title="Delete">&#x1F5D1;</span> <!-- Trash can icon -->
+                  <span class="icon drag-icon" title="Drag">&#x21C5;</span> <!-- Up-down arrow -->
+                </div>
+                <p><%= question.text %></p>
+                <div class="rating-options">
+                  <% [5, 4, 3, 2, 1].forEach(function(score) { %>
+                    <label>
+                      <input type="radio" name="question_<%= question.id %>" value="<%= score %>">
+                      <%= score %>
+                    </label>
+                  <% }) %>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        <% }) %>
+
+        <button class="btn save-order">Save Order</button>
+        
+        <!-- Feedback Section -->
+        <div class="feedback-section">
+          <h3>Feedback</h3>
+          <textarea id="feedbackInput" class="form-element" placeholder="Your feedback..."></textarea>
+          <button id="submitFeedback" class="add-btn">Submit Feedback</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/questionnaire.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
