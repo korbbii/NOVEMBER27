@@ -6,7 +6,7 @@ const { User } = require('../models');
 const db = require("../models");
 const bcrypt = require("bcrypt");
 const { Student,Instructor } = require("../models");
-const { Subject } = require("../models");
+const { Subject, Section} = require("../models");
 
 const routes = express.Router();
 
@@ -91,28 +91,6 @@ routes.delete("/deleteQuestion/:id", async (req, res) => {
 // Serve evaluate.ejs at the /evaluate route
 routes.get("/evaluate", (req, res) => {
   res.render("evaluate");
-});
-
-// Serve section.ejs at the /section route with section data
-routes.get("/section", async (req, res) => {
-  try {
-    const section = await getSection(); // Fetch section from the controller
-    res.render("section", { section }); // Pass section to the view
-  } catch (error) {
-    console.error("Error fetching categories:", error);
-    res.status(500).send('Internal server error');
-  }
-});
-
-// Add this route to fetch section list
-routes.get("/section/list", async (req, res) => {
-  try {
-      const section = await getSection(); // Fetch section from the controller
-      res.json(section); // Send section as JSON
-  } catch (error) {
-      console.error("Error fetching section:", error);
-      res.status(500).send('Internal server error');
-  }
 });
 
 // Update section by ID
@@ -244,10 +222,10 @@ routes.post("/instructors", async (req, res) => {
   }
 });
 
-routes.get("/subjects", async (req, res) => {
+routes.get("/1subjects", async (req, res) => {
   try {
     const subjects = await Subject.findAll(); // Fetch all subjects from the database
-    res.render("subjects", { subjects }); // Pass subjects to the view
+    res.render("1subjects", { subjects }); // Pass subjects to the view
   } catch (error) {
     console.error("Error fetching subjects:", error);
     res.status(500).send('Internal Server Error'); // Handle error properly
@@ -255,7 +233,7 @@ routes.get("/subjects", async (req, res) => {
 });
 
 // Add a new subjects
-routes.post("/subjects", async (req, res) => {
+routes.post("/1subjects", async (req, res) => {
   try {
     console.log(req.body); // Log the entire request body
 
@@ -272,7 +250,7 @@ routes.post("/subjects", async (req, res) => {
     });
 
     // Redirect to /subjects to see the updated list
-    res.redirect("/subjects");
+    res.redirect("/1subjects");
   } catch (error) {
     console.error("Error adding subject:", error);
     return res.status(500).send('Internal Server Error'); // Return to prevent further code execution
@@ -285,16 +263,8 @@ routes.post("/2section", saveSection);
 routes.post("/3section", saveSection);
 routes.post("/4section", saveSection);
 
-routes.get("/2section", (req, res) => {
-  res.render("2section");
-});
-
-routes.get("/3section", (req, res) => {
-  res.render("3section");
-});
-
-routes.get("/4section", (req, res) => {
-  res.render("4section");
+routes.get("/studentmain", (req, res) => {
+  res.render("studentmain");
 });
 
 routes.get("/instructors", (req, res) => {
@@ -307,8 +277,8 @@ routes.get("/users", (req, res) => {
 });
 
 // Serve subjects.ejs at the /subjects route
-routes.get("/subjects", (req, res) => {
-  res.render("subjects");
+routes.get("/1subjects", (req, res) => {
+  res.render("1subjects");
 });
 
 // Login route
@@ -443,17 +413,93 @@ routes.delete('/api/students/:id', async (req, res) => {
 });
 
 routes.get('/1section', async (req, res) => {
-  const yearLevel = '1st Year'; // Define the year level here
+  const yearLevel = '1st Year'; 
   try {
-    const students = await Student.findAll({ where: { yearLevel } }); // Fetch students for the year level
-    console.log("Students fetched:", students); // Log to check if students are being fetched correctly
-    res.render('1section', { students, yearLevel }); // Pass both students and yearLevel to the template
+    // Fetch sections and students for the 1st year
+    const sections = await Section.findAll();
+    const students = await Student.findAll({ where: { yearLevel } });
+    
+    console.log("Sections fetched:", sections);
+    console.log("Students fetched:", students);
+    
+    // Pass both sections, students, and yearLevel to the template
+    res.render('1section', { sections, students, yearLevel });
   } catch (error) {
-    console.error("Error retrieving students:", error);
-    res.status(500).send("Error retrieving students.");
+    console.error("Error retrieving sections or students:", error);
+    res.status(500).send("Error retrieving sections or students.");
   }
 });
 
+routes.get('/2section', async (req, res) => {
+  const yearLevel = '2nd Year'; 
+  try {
+    // Fetch sections and students for the 1st year
+    const sections = await Section.findAll();
+    const students = await Student.findAll({ where: { yearLevel } });
+    
+    console.log("Sections fetched:", sections);
+    console.log("Students fetched:", students);
+    
+    // Pass both sections, students, and yearLevel to the template
+    res.render('2section', { sections, students, yearLevel });
+  } catch (error) {
+    console.error("Error retrieving sections or students:", error);
+    res.status(500).send("Error retrieving sections or students.");
+  }
+});
 
+routes.get('/3section', async (req, res) => {
+  const yearLevel = '3rd Year'; 
+  try {
+    // Fetch sections and students for the 1st year
+    const sections = await Section.findAll();
+    const students = await Student.findAll({ where: { yearLevel } });
+    
+    console.log("Sections fetched:", sections);
+    console.log("Students fetched:", students);
+    
+    // Pass both sections, students, and yearLevel to the template
+    res.render('3section', { sections, students, yearLevel });
+  } catch (error) {
+    console.error("Error retrieving sections or students:", error);
+    res.status(500).send("Error retrieving sections or students.");
+  }
+});
+
+routes.get('/4section', async (req, res) => {
+  const yearLevel = '4th Year'; 
+  try {
+    // Fetch sections and students for the 1st year
+    const sections = await Section.findAll();
+    const students = await Student.findAll({ where: { yearLevel } });
+    
+    console.log("Sections fetched:", sections);
+    console.log("Students fetched:", students);
+    
+    // Pass both sections, students, and yearLevel to the template
+    res.render('4section', { sections, students, yearLevel });
+  } catch (error) {
+    console.error("Error retrieving sections or students:", error);
+    res.status(500).send("Error retrieving sections or students.");
+  }
+});
+
+routes.post('/section/add', async (req, res) => {
+  const { sectionBlock, sectionYearLevel } = req.body;
+
+  // Validate input: Block should be a single uppercase letter
+  if (!/^[A-Z]$/.test(sectionBlock)) {
+    return res.status(400).send("Block must be a single uppercase letter.");
+  }
+
+  try {
+    // Save the block with the associated year level to the Sections table
+    await Section.create({ block: sectionBlock, yearLevel: sectionYearLevel });
+    res.redirect("/1section");
+  } catch (error) {
+    console.error("Error adding block:", error);
+    res.status(500).send("Failed to add block.");
+  }
+});
 
 module.exports = routes;

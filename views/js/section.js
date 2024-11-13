@@ -1,23 +1,16 @@
 const modal = document.getElementById("add-bundle-modal");
-// Get the button that opens the modal
 const addButton = document.querySelector(".add-bundle-btn");
-// Get the close button element
 const closeBtn = document.querySelector(".close-btn");
-// Get the cancel button in the form
 const cancelBtn = document.querySelector(".cancel-btn");
-// Get the form element
-const addBundleForm = document.getElementById("add-bundle-form");
-// Get the input field for the new block
 const sectionBlockInput = document.getElementById("Section-block");
-// Get the block table body where new rows will be added
-const blockTableBody = document.getElementById("block-table-body");
 
-// Show the modal when the Add Bundle button is clicked
+// Show the modal when the Add Block button is clicked
 addButton.addEventListener("click", () => {
   modal.classList.remove("hidden");
+  sectionBlockInput.focus();
 });
 
-// Hide the modal when the close button or cancel button is clicked
+// Hide the modal
 closeBtn.addEventListener("click", () => {
   modal.classList.add("hidden");
 });
@@ -25,7 +18,7 @@ cancelBtn.addEventListener("click", () => {
   modal.classList.add("hidden");
 });
 
-// Optionally, close the modal when clicking outside the modal content
+// Optionally close the modal when clicking outside the content
 window.addEventListener("click", (e) => {
   if (e.target === modal) {
     modal.classList.add("hidden");
@@ -67,4 +60,7 @@ addBundleForm.addEventListener("submit", (e) => {
     modal.classList.add("hidden");
   }
 });
+
+
+
 

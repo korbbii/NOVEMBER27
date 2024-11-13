@@ -14,8 +14,8 @@ pwShowHide.forEach((eyeIcon) => {
       pwField.type = isPassword ? "text" : "password";
 
       // Change the eye icon based on the password visibility
-      eyeIcon.classList.toggle("uil-eye-slash", isPassword);
-      eyeIcon.classList.toggle("uil-eye", !isPassword);
+      eyeIcon.classList.toggle("uil-eye-slash", !isPassword);
+      eyeIcon.classList.toggle("uil-eye", isPassword);
     });
   });
 });

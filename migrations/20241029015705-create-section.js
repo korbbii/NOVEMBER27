@@ -14,7 +14,7 @@ module.exports = {
       },
       yearLevel: {
         type: Sequelize.INTEGER
-      },
+      },  
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

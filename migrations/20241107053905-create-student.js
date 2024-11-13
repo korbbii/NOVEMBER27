@@ -15,11 +15,11 @@ module.exports = {
       fname: {
         type: Sequelize.STRING
       },
-      yearLevel: {
-        type: Sequelize.STRING
-      },
       block: {
         type: Sequelize.STRING
+      },
+      yearLevel: {
+        type: Sequelize.INTEGER
       },
       subjects: {
         type: Sequelize.STRING

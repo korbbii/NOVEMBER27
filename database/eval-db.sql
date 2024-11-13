@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2024 at 02:57 AM
+-- Generation Time: Nov 13, 2024 at 02:15 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,6 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `criteria`
+--
+
+CREATE TABLE `criteria` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `instructors`
 --
 
@@ -33,6 +46,20 @@ CREATE TABLE `instructors` (
   `fname` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `subjects` varchar(255) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `questions`
+--
+
+CREATE TABLE `questions` (
+  `id` int(11) NOT NULL,
+  `feedback` varchar(255) DEFAULT NULL,
+  `criteriaId` int(11) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -50,6 +77,14 @@ CREATE TABLE `sections` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sections`
+--
+
+INSERT INTO `sections` (`id`, `block`, `yearLevel`, `createdAt`, `updatedAt`) VALUES
+(5, 'F', 1, '2024-11-12 15:53:30', '2024-11-12 15:53:30'),
+(6, 'B', 1, '2024-11-13 12:42:45', '2024-11-13 12:42:45');
 
 -- --------------------------------------------------------
 
@@ -73,7 +108,12 @@ INSERT INTO `sequelizemeta` (`name`) VALUES
 ('20241029015026-create-instructor.js'),
 ('20241029015357-create-subject.js'),
 ('20241029015705-create-section.js'),
-('20241029020839-create-student.js');
+('20241029020839-create-student.js'),
+('20241104095118-create-student.js'),
+('20241105014437-create-criteria.js'),
+('20241105014511-create-question.js'),
+('20241107053517-create-student.js'),
+('20241107053905-create-student.js');
 
 -- --------------------------------------------------------
 
@@ -85,9 +125,10 @@ CREATE TABLE `students` (
   `id` int(11) NOT NULL,
   `studentId` int(11) DEFAULT NULL,
   `fname` varchar(255) DEFAULT NULL,
-  `section` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `block` varchar(255) DEFAULT NULL,
+  `yearLevel` int(11) DEFAULT NULL,
   `subjects` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -96,9 +137,9 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `studentId`, `fname`, `section`, `password`, `subjects`, `createdAt`, `updatedAt`) VALUES
-(40, 1234567, 'Arnold Cagande', 'BSIT - 2A', '', 'IT10111', '2024-11-01 15:48:09', '2024-11-01 16:09:21'),
-(41, 2103944, 'Kirby Tan', 'BSIT - 2A', '123', 'IT101', '2024-11-02 21:25:49', '2024-11-02 21:25:49');
+INSERT INTO `students` (`id`, `studentId`, `fname`, `block`, `yearLevel`, `subjects`, `password`, `createdAt`, `updatedAt`) VALUES
+(1, 2103941, 'ADSASD', 'A', 1, 'asdasd', '$2b$10$OO2EwvEHhHP8baq4Yhb3AO5grB4z9EZFnQS3BwVSP8w8lbBxAxAai', '2024-11-07 05:39:49', '2024-11-07 05:39:49'),
+(2, 213123, 'KIR KIR', 'B', 2, 'ADASDASD', '$2b$10$FCSUmUYMHTEhbFmgAyl/.unDyJ0RVtpggZnPpMlKttqF2BQTWSxLG', '2024-11-07 05:43:51', '2024-11-07 05:43:51');
 
 -- --------------------------------------------------------
 
@@ -145,9 +186,21 @@ INSERT INTO `users` (`id`, `name`, `username`, `password`, `userType`, `createdA
 --
 
 --
+-- Indexes for table `criteria`
+--
+ALTER TABLE `criteria`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `instructors`
 --
 ALTER TABLE `instructors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `questions`
+--
+ALTER TABLE `questions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -187,22 +240,34 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `criteria`
+--
+ALTER TABLE `criteria`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `instructors`
 --
 ALTER TABLE `instructors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `subjects`
