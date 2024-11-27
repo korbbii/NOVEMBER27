@@ -45,19 +45,17 @@
                   <th>InstructorID</th>
                   <th>Name</th>
                   <th>Subjects</th>
-                  <th>Password</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody id="instructor-table-body">
                 <% if (instructors && instructors.length > 0) { %>
-                  <% instructors.forEach((instructors, index) => { %>
+                  <% instructors.forEach((instructor, index) => { %>
                     <tr>
                       <td><%= index + 1 %></td>
                       <td><%= instructor.instructorId %></td>
-                      <td><%= instructor.fname %></td>
+                      <td><%= instructor.funame %></td>
                       <td><%= instructor.subjects %></td>
-                      <td><%= instructor.password %></td> 
                       <td>
                         <i class="bx bx-show"></i>
                         <i class="bx bx-edit"></i>
@@ -93,13 +91,7 @@
               <!-- Form Fields -->
               <div class="form-fields">
                 <div class="input-group">
-                  <label for="section">Select Section</label>
-                  <select id="section" name="section">
-                    <option value="1"></option>
-                    <option value="BSIT - 1A">BSIT - 1A</option>
-                    <option value="BSIT - 1B">BSIT - 2A</option>
-                  </select>
-                </div>
+                
 
                 <div class="input-group">
                   <label for="instructor-id">Instructor ID</label>
@@ -120,12 +112,6 @@
               <div class="input-group">
                 <label for="description">Instructor Subjects</label>
                 <textarea type="text" id="Subjects" name="subjects" placeholder="Subjects"></textarea>
-              </div>
-
-              <!-- Image Upload Section -->
-              <div class="input-group">
-                <label for="instructor-image">Instructor Image</label>
-                <input type="file" id="instructor-image" accept="image/*" />
               </div>
 
               <!-- Action Buttons -->
@@ -173,12 +159,12 @@
             // Open modal
             modal.style.display = "flex";
 
-            // Change modal title and button text to "Edit Product"
+            // Change modal title and button text to "Edit Instructor"
             document.querySelector(".modal-header h2").innerHTML =
-              '<i class="bx bx-edit"></i> Edit Product';
+              '<i class="bx bx-edit"></i> Edit Instructor';
             document.querySelector(".btn-add").textContent = "Save Changes";
 
-            // Here you should get the relevant product data, e.g., from a row or an API
+            // Here you should get the relevant Instructor data, e.g., from a row or an API
             const instructorRow = event.target.closest("tr"); // Get the parent row of the clicked button
             const instructorData = {
               instructortId: instructorRow.cells[1].textContent,
@@ -257,7 +243,6 @@ document.addEventListener('DOMContentLoaded', loadInstructors);
     </section>
     <!-- NAVBAR -->
 
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="/js/dashboard.js"></script>
   </body>
 </html>

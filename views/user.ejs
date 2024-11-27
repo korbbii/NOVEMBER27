@@ -18,8 +18,8 @@
       <main>
         <div class="container">
           <div class="header">
-            <h2>User List</h2>
-            <button class="new-user-btn">+ New User</button>
+            <h2>Admin List</h2>
+            <button class="new-user-btn">+ New Admin</button>
           </div>
           
           <div class="table-controls">
@@ -45,8 +45,7 @@
               <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>USER ID</th>
-                <th>Type</th>
+                <th>Admin ID</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -68,23 +67,16 @@
 <div id="newUserModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h3>New User</h3>
+    <h3>New Admin</h3>
     <form id="newUserForm">
       <label for="name">Name</label>
       <input type="text" id="name" name="name" required />
 
-      <label for="username">Username</label>
+      <label for="username">Admin ID</label>
       <input type="text" id="username" name="username" required />
 
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required />
-
-      <label for="userType">User Type</label>
-      <select id="userType" name="userType">
-        <option value="Student">Student</option>
-        <option value="Instructor">Instructor</option>
-        <option value="Admin">Admin</option>
-      </select>
 
       <div class="button-group">
         <button type="submit" class="save-btn">Save</button>
@@ -99,25 +91,18 @@
   <div id="editUserModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <h3>Edit User</h3>
+      <h3>Edit Admin</h3>
       <form id="editUserForm">
         <input type="hidden" id="editUserId" name="id" />
 
         <label for="editName">Name</label>
         <input type="text" id="editName" name="name" required />
 
-        <label for="editUsername">Username</label>
+        <label for="editUsername">Admin ID</label>
         <input type="text" id="editUsername" name="username" required />
 
         <label for="editPassword">Password</label>
         <input type="password" id="editPassword" name="password" />
-
-        <label for="editUserType">User Type</label>
-        <select id="editUserType" name="userType">
-          <option value="Student">Student</option>
-          <option value="Instructor">Instructor</option>
-          <option value="Admin">Admin</option>
-        </select>
 
         <div class="button-group">
           <button type="submit" class="save-btn">Update</button>
@@ -126,48 +111,6 @@
       </form>
     </div>
   </div>
-<script>
-  
-$(document).ready(function() {
-  // Function to load users (students) from the server
-  async function loadUsers() {
-    try {
-      const response = await fetch('/api/students'); // Fetching students
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const students = await response.json(); // Parse the JSON response
-
-      const tableBody = $('.user-table tbody');
-      tableBody.empty(); // Clear existing rows
-
-      // Append new rows based on students data
-      students.forEach((student, index) => {
-        const row = `
-          <tr>
-            <td>${index + 1}</td>
-            <td>${student.fname}</td>
-            <td>${student.studentId}</td>
-            <td>Student</td> 
-            <td>
-              <button class="edit-btn" data-id="${student.id}">Edit</button>
-              <button class="delete-btn" data-id="${student.id}">Delete</button>
-            </td>
-          </tr>
-        `;
-        tableBody.append(row);
-      });
-    } catch (error) {
-      console.error('Error loading users:', error);
-    }
-  }
-
-  // Call loadUsers on page load
-  loadUsers();
-});
-
-</script>
-
 
     </section>
     <script src="/js/dashboard.js"></script>

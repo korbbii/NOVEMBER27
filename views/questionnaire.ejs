@@ -7,9 +7,13 @@
   <link rel="stylesheet" href="/css/questionnaire.css">
 </head>
 <body>
-    <%- include('partials/sidebar') %>
+  <%- include('partials/sidebar') %>
+  <div class="sidebar">
+        <!-- Sidebar content goes here -->
+    </div>
+
   <div class="container">
-    <h2>Manage Questionnaire</h2>
+    <h2>Manage Questionnaire</h2><br>
 
     <!-- Flex Container for Question Form and Questionnaire Table -->
     <div class="form-container">
@@ -18,9 +22,9 @@
         <h3>Question Form</h3>
         <select id="criteriaSelect" class="form-element">
           <option value="" disabled selected>Please select here</option>
-          <% criteria.forEach(function(criterion) { %>
-            <option value="<%= criterion.id %>"><%= criterion.name %></option>
-          <% }) %>
+          <option value="1">Criteria 1</option>
+          <option value="2">Criteria 2</option>
+          <option value="3">Criteria 3</option>
         </select>
 
         <textarea id="questionInput" class="form-element" placeholder="Question"></textarea>
@@ -30,46 +34,72 @@
 
       <!-- Evaluation Questionnaire Table -->
       <div class="questionnaire-table">
-        <h3>Evaluation Questionnaire for Academic <%= academicYear %></h3>
+        <h3>Evaluation Questionnaire</h3>
         <div class="legend">
           <p>Rating Legend</p>
           <p>5 = Strongly Agree, 4 = Agree, 3 = Uncertain, 2 = Disagree, 1 = Strongly Disagree</p>
         </div>
 
-        <!-- Criteria and Questions -->
-        <% criteria.forEach(function(criterion) { %>
-          <div class="criteria-section">
-            <h4><%= criterion.name %></h4>
-            <% criterion.questions.forEach(function(question) { %>
-              <div class="question-row">
-                <div class="action-icons">
-                  <!-- Icons for editing, deleting, and dragging -->
-                  <span class="icon edit-icon" title="Edit">&#x270E;</span> <!-- Pencil icon -->
-                  <span class="icon delete-icon" title="Delete">&#x1F5D1;</span> <!-- Trash can icon -->
-                  <span class="icon drag-icon" title="Drag">&#x21C5;</span> <!-- Up-down arrow -->
-                </div>
-                <p><%= question.text %></p>
-                <div class="rating-options">
-                  <% [5, 4, 3, 2, 1].forEach(function(score) { %>
-                    <label>
-                      <input type="radio" name="question_<%= question.id %>" value="<%= score %>">
-                      <%= score %>
-                    </label>
-                  <% }) %>
-                </div>
-              </div>
-            <% }) %>
+        <!-- Static Criteria and Questions -->
+        <div class="criteria-section">
+          <h4>Criteria 1</h4>
+          <div class="question-row">
+            <div class="action-icons">
+              <span class="icon edit-icon" title="Edit">&#x270E;</span>
+              <span class="icon delete-icon" title="Delete">&#x1F5D1;</span>
+              <span class="icon drag-icon" title="Drag">&#x21C5;</span>
+            </div>
+            <p>Question here...</p>
+            <div class="rating-options">
+              <label><input type="radio" name="question_1" value="5"> 5</label>
+              <label><input type="radio" name="question_1" value="4"> 4</label>
+              <label><input type="radio" name="question_1" value="3"> 3</label>
+              <label><input type="radio" name="question_1" value="2"> 2</label>
+              <label><input type="radio" name="question_1" value="1"> 1</label>
+            </div>
           </div>
-        <% }) %>
-
-        <button class="btn save-order">Save Order</button>
-        
-        <!-- Feedback Section -->
-        <div class="feedback-section">
-          <h3>Feedback</h3>
-          <textarea id="feedbackInput" class="form-element" placeholder="Your feedback..."></textarea>
-          <button id="submitFeedback" class="add-btn">Submit Feedback</button>
         </div>
+
+        <div class="criteria-section">
+          <h4>Criteria 2</h4>
+          <div class="question-row">
+            <div class="action-icons">
+              <span class="icon edit-icon" title="Edit">&#x270E;</span>
+              <span class="icon delete-icon" title="Delete">&#x1F5D1;</span>
+              <span class="icon drag-icon" title="Drag">&#x21C5;</span>
+            </div>
+            <p>Question here...</p>
+            <div class="rating-options">
+              <label><input type="radio" name="question_3" value="5"> 5</label>
+              <label><input type="radio" name="question_3" value="4"> 4</label>
+              <label><input type="radio" name="question_3" value="3"> 3</label>
+              <label><input type="radio" name="question_3" value="2"> 2</label>
+              <label><input type="radio" name="question_3" value="1"> 1</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="criteria-section">
+          <h4>Criteria 3</h4>
+          <div class="question-row">
+            <div class="action-icons">
+              <span class="icon edit-icon" title="Edit">&#x270E;</span>
+              <span class="icon delete-icon" title="Delete">&#x1F5D1;</span>
+              <span class="icon drag-icon" title="Drag">&#x21C5;</span>
+            </div>
+            <p>Question here...</p>
+            <div class="rating-options">
+              <label><input type="radio" name="question_4" value="5"> 5</label>
+              <label><input type="radio" name="question_4" value="4"> 4</label>
+              <label><input type="radio" name="question_4" value="3"> 3</label>
+              <label><input type="radio" name="question_4" value="2"> 2</label>
+              <label><input type="radio" name="question_4" value="1"> 1</label>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn save-order">Save</button>
+        
       </div>
     </div>
   </div>

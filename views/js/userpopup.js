@@ -50,13 +50,11 @@ document.addEventListener("DOMContentLoaded", function () {
             const userId = row.children[0].innerText;
             const userName = row.children[1].innerText;
             const userUsername = row.children[2].innerText;
-            const userType = row.children[3].innerText;
 
             // Pre-fill the form with user data
             document.getElementById('editUserId').value = userId;
             document.getElementById('editName').value = userName;
             document.getElementById('editUsername').value = userUsername;
-            document.getElementById('editUserType').value = userType;
 
             // Open edit modal
             editUserModal.style.display = 'flex'; // Use 'flex' for proper display
@@ -74,7 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
             name: document.getElementById('editName').value,
             username: document.getElementById('editUsername').value,
             password: document.getElementById('editPassword').value,
-            userType: document.getElementById('editUserType').value
         };
 
         // Handle form submission logic (e.g., via AJAX or form submission)

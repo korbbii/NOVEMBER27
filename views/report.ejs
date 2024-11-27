@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluation Report</title>
+    <link rel="stylesheet" href="/css/report.css">
+</head>
+<body>
+    <%- include('partials/sidebar') %>
+    <div class="container">
+        <header>
+            <h1>Evaluation Report</h1>
+            <div class="tabs">
+                <button class="tab active" data-tab="home">Dashboard</button> <!-- Home Tab -->
+                <button class="tab" data-tab="instructor">Instructor Report</button>
+                <button class="tab" data-tab="student">Student Report</button>
+            </div>
+        </header>
+        <br>
+        <!-- Home Section (only shown when 'Home' is active) -->
+        <section id="home-report" class="report active">
+            <div class="summary">
+                <div class="card">
+                    Total Instructors Evaluated: <span>12</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 12%;"></div> <!-- Example: 12% -->
+                    </div>
+                </div>
+                <div class="card">
+                    Total Students Evaluated: <span>12</span>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 12%;"></div> <!-- Example: 12% -->
+                    </div>
+                </div>
+                <div class="card">
+                    Top Remarks Instructor: <span>John Doe</span>
+                    <div>
+                    </div>
+                </div>
+                <div class="card">
+                    Lowest Remarks Instructor: <span>Mary Jane</span>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Instructor Report (hidden when 'Home' is active) -->
+        <section id="instructor-report" class="report">
+            <div class="summary">
+
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Instructor Name</th>
+                        <th>Remarks</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>4.1</td>
+                        <td><a href="/statistics" class="view-btn-link"><button class="view-btn">View</button></a></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jane Smith</td>
+                        <td>2.4</td>
+                        <td><a href="/statistics" class="view-btn-link"><button class="view-btn">View</button></a></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Student Report (hidden when 'Home' is active) -->
+        <section id="student-report" class="report">
+            <div class="summary">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Student Name</th>
+                        <th>Section</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mary Jane</td>
+                        <td>1-A</td>
+                        <td><button class="view-btn" data-id="1">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Peter Parker</td>
+                        <td>1-B</td>
+                        <td><button class="view-btn" data-id="1">View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <script src="/js/report.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

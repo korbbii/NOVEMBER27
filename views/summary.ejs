@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/summary.css" />
+    <title>Evaluation Summary</title>
+  </head>
+  <body>
+    <%- include('partials/instructorSidebar') %>
+    <!-- MAIN -->
+    <main>
+      <h1 class="title">Evaluation Summary</h1>
+
+      <!-- Container for cards -->
+      <div class="summary-cards-container">
+        
+        <!-- Evaluation Card 1 -->
+        <div class="summary-card">
+          <h2>Evaluation #1</h2>
+          <table class="evaluation-table">
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>Answer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>How would you rate the instructor's teaching?</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>How clear were the course materials?</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>How engaging were the lectures?</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>How well did the instructor explain complex topics?</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>Was the course content up to date?</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>How approachable was the instructor?</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>Did the instructor encourage student participation?</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>How would you rate the overall course experience?</td>
+                <td>5</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="remarks"><br><hr/><br>
+            <p><strong>Feedback:</strong> The course was informative but could use more practical examples.</p>
+            <br><hr/><br>
+            <p><strong>Remarks:</strong> 4.3</p>
+          </div>
+
+          <div class="info">
+            <p><strong>Evaluated by:</strong> ***** ***</p>
+            <p><strong>Submitted:</strong> November 22, 2024</p>
+          </div>
+        </div>
+
+        <!-- Evaluation Card 2 -->
+        <div class="summary-card">
+          <h2>Evaluation #2</h2>
+          <table class="evaluation-table">
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>Answer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>How would you rate the instructor's teaching?</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>How clear were the course materials?</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>How engaging were the lectures?</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>How well did the instructor explain complex topics?</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>Was the course content up to date?</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>How approachable was the instructor?</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>Did the instructor encourage student participation?</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>How would you rate the overall course experience?</td>
+                <td>4</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="remarks"><br><hr/><br>
+            <p><strong>Feedback:</strong> The instructor was knowledgeable, but more engagement would be helpful.</p>
+            <br><hr/><br>
+            <p><strong>Remarks:</strong> 4.0</p>
+          </div>
+
+          <div class="info">
+            <p><strong>Evaluated by:</strong> ***** ***</p>
+            <p><strong>Submitted:</strong> November 21, 2024</p>
+          </div>
+        </div>
+
+      </div> <!-- End of summary-cards-container -->
+
+    </main>
+    <script src="/js/summary.js"></script>
+    <script src="/js/dashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics</title>
+    <link rel="stylesheet" href="css/statistics.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <%- include('partials/sidebar') %>
+    <div class="container">
+        <!-- Questions Section -->
+        <div class="questions">
+            <table class="question-table">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Answer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example Questions and Answers -->
+                    <tr>
+                        <td>How would you rate the overall quality of the faculty member's teaching?</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>How well does the faculty member engage with and support students?</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>How effective is the faculty member in communicating course material?</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Does the faculty member use a variety of teaching methods?</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>How well does the faculty member foster a positive classroom environment?</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>How accessible is the faculty member outside of class for questions and support?</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>How well does the faculty member incorporate real-world examples in their teaching?</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>How consistently does the faculty member provide constructive feedback?</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>How does the faculty member stay current in their field?</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>How do you think the faculty member's performance compares to other instructors?</td>
+                        <td>3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Status Section -->
+        <div class="status">
+            <table class="status-table">
+                <tr>
+                    <td>Remark</td>
+                    <td>3.4</td>
+                </tr>
+                <tr>
+                    <td>Evaluated By</td>
+                    <td>John Keen</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td>20204-11-22</td>
+                </tr>
+            </table>
+            <!-- Chart Section -->
+            <div class="chart">
+                <canvas id="answerChart"></canvas>
+            </div>
+            <div class="feedback">
+                <h4>Feedback</h4>
+                <p>
+                    Good
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var ctx = document.getElementById('answerChart').getContext('2d');
+        var answerChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Strongly Disagree', 'Disagree', 'Uncertain', 'Agree', 'Strongly Agree'],
+                datasets: [{
+                    label: 'Answers',
+                    data: [1, 3, 5, 4, 2], // Example data values, adjust according to actual survey results
+                    backgroundColor: ['#FF5B5B', '#FF9E2C', '#FFCE56', '#4BC0C0', '#36A2EB'],
+                    borderColor: ['#FF5B5B', '#FF9E2C', '#FFCE56', '#4BC0C0', '#36A2EB'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+      <script src="/js/dashboard.js"></script>
+</body>
+</html>

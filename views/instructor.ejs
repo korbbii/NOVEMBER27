@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/instructor.css" />
+    <title>Instructor Dashboard</title>
+  </head>
+  <body>
+    <%- include('partials/instructorSidebar') %>
+    <!-- MAIN -->
+    <main>
+      <h1 class="title">Hello, <%- funame -%></h1>
+      <div class="info-data">
+        <div class="card" onclick="location.href='/summary'" style="cursor: pointer;">
+          <div class="head">
+            <div>
+              <h2>Evaluation Summary</h2>
+            </div>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- MAIN -->
+    <script src="/js/studentdashboard.js"></script>
+    <script src="/js/user.js"></script>
+  </body>
+</html>

@@ -30,62 +30,12 @@ routes.get("/dashboard", (req, res) => {
   res.render("dashboard");
 });
 
-// Serve questionnaire.ejs after successful login
+routes.get("/history", (req, res) => {
+  res.render("history");
+});
+
 routes.get("/questionnaire", (req, res) => {
-  const criteriaData = [
-    // Populate with your actual data here
-    {
-      id: 1,
-      name: 'Crieria 1',
-      questions: [
-        { id: 1, text: 'Question 1 for Criteria 1' },
-        { id: 2, text: 'Question 2 for Criteria 1' },
-      ]
-    },
-    {
-      id: 2,
-      name: 'Criteria 2',
-      questions: [] // Ensure it's defined
-    }
-  ];
-  res.render("questionnaire", { criteria: criteriaData, academicYear: '2024-2025' });
-});
-
-// Save Question
-routes.post("/saveQuestion", async (req, res) => {
-  try {
-      const { criteriaId, question } = req.body;
-      // Assuming a successful save
-      res.json({ success: true });
-  } catch (error) {
-      console.error("Error saving question:", error);
-      res.json({ success: false });
-  }
-});
-
-// Edit Question
-routes.put("/editQuestion/:id", async (req, res) => {
-  try {
-      const { criteriaId, question } = req.body;
-      const { id } = req.params;
-      // Logic to update the question by `id`
-      res.json({ success: true });
-  } catch (error) {
-      console.error("Error editing question:", error);
-      res.json({ success: false });
-  }
-});
-
-// Delete Question
-routes.delete("/deleteQuestion/:id", async (req, res) => {
-  try {
-      const { id } = req.params;
-      // Logic to delete the question by `id`
-      res.json({ success: true });
-  } catch (error) {
-      console.error("Error deleting question:", error);
-      res.json({ success: false });
-  }
+  res.render("questionnaire");
 });
 
 // Serve evaluate.ejs at the /evaluate route
@@ -210,7 +160,7 @@ routes.post("/instructors", async (req, res) => {
     await Instructor.create({
       instructorId,
       funame,
-      password,
+      password: hashedPassword,
       subjects
     });
 
@@ -257,18 +207,63 @@ routes.post("/1subjects", async (req, res) => {
   }
 });
 
+routes.get("/2subjects", async (req, res) => {
+  try {
+    const subjects = await Subject.findAll(); // Fetch all subjects from the database
+    res.render("2subjects", { subjects }); // Pass subjects to the view
+  } catch (error) {
+    console.error("Error fetching subjects:", error);
+    res.status(500).send('Internal Server Error'); // Handle error properly
+  }
+});
+
+routes.get("/3subjects", async (req, res) => {
+  try {
+    const subjects = await Subject.findAll(); // Fetch all subjects from the database
+    res.render("3subjects", { subjects }); // Pass subjects to the view
+  } catch (error) {
+    console.error("Error fetching subjects:", error);
+    res.status(500).send('Internal Server Error'); // Handle error properly
+  }
+});
+
+routes.get("/4subjects", async (req, res) => {
+  try {
+    const subjects = await Subject.findAll(); // Fetch all subjects from the database
+    res.render("4subjects", { subjects }); // Pass subjects to the view
+  } catch (error) {
+    console.error("Error fetching subjects:", error);
+    res.status(500).send('Internal Server Error'); // Handle error properly
+  }
+});
 // Handle form submission for saving section
 routes.post("/1section", saveSection);
 routes.post("/2section", saveSection);
 routes.post("/3section", saveSection);
 routes.post("/4section", saveSection);
 
-routes.get("/studentmain", (req, res) => {
-  res.render("studentmain");
+routes.get('/student', (req, res) => {
+    console.log('req.user:', req.user);
+    const fname = req.user ? req.user.fname : 'Student';
+    res.render('student', { fname });
 });
 
-routes.get("/instructors", (req, res) => {
-  res.render("instructors");
+routes.get("/report", (req, res) => {
+  res.render("report");
+});
+
+routes.get("/statistics", (req, res) => {
+  res.render("statistics");
+});
+
+routes.get("/summary", (req, res) => {
+  res.render("summary");
+});
+
+routes.get('/instructor', (req, res) => {
+  console.log('req.user:', req.user);
+  const funame = req.user ? req.user.funame : '';
+  res.render('instructor', { funame });
 });
 
 // Serve user.ejs at the /users route
@@ -291,12 +286,70 @@ routes.get('/users/list', async (req, res) => {
   res.json(users); // Return the users as JSON
 });
 
-  
+// Update a specific user by ID
+routes.put('/users/:id', async (req, res) => {
+  const { id } = req.params;
+  const { name, username, password } = req.body;
+  try {
+    const user = await User.findOne({ where: { id } });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Update the user with new data
+    user.name = name;
+    user.username = username;
+
+    // Only update the password if it is provided
+    if (password) {
+      const hashedPassword = await bcrypt.hash(password, 10); // Hash the new password
+      user.password = hashedPassword;
+    }
+
+
+    await user.save();
+    res.json(user); // Return the updated user
+  } catch (error) {
+    console.error('Error updating user:', error);
+    res.status(500).json({ error: 'Error updating user' });
+  }
+});
+
+// Get a specific user by ID
+routes.get('/users/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await User.findOne({ where: { id } });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    res.json(user);
+  } catch (error) {
+    console.error('Error fetching user:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// DELETE user by ID
+routes.delete('/users/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    await User.destroy({ where: { id } });
+    res.sendStatus(200);
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).send('Server error');
+  }
+});
+
 // Add a new user
 routes.post('/users', async (req, res) => {
-  const { name, username, password, userType } = req.body;
+  const { name, username, password } = req.body;
   try {
-    const newUser = await User.create({ name, username, password, userType });
+    // Hash the password before saving the user
+    const hashedPassword = await bcrypt.hash(password, 10); // 10 is the salt rounds
+
+    const newUser = await User.create({ name, username, password: hashedPassword });
     res.json(newUser);
   } catch (error) {
     res.status(400).json({ error: 'Error creating user' });

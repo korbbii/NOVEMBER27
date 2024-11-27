@@ -1,0 +1,89 @@
+/* General layout */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #f0f4f8, #d9e8fc);
+    margin: 0;
+    padding: 0;
+}
+  
+main {
+    padding: 20px;
+}
+  
+.title {
+    font-size: 1.5rem; /* Smaller title font size */
+    color: #333;
+    margin-top: 20px;
+    text-align: left;
+    margin-left: 30px;
+}
+  
+/* Container for summary cards */
+.summary-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Adds space between cards */
+    margin-top: 30px;
+}
+  
+/* Single summary card */
+.summary-card {
+    background: white;
+    border-radius: 8px; /* Slightly reduced border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px; /* Reduced padding */
+    width: 37%; /* Adjust width of the cards to be smaller */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: auto; /* Make height flexible */
+    min-height: 320px; /* Minimum height for consistency */
+}
+  
+/* Card hover effect */
+.summary-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+  
+/* Table style */
+.evaluation-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px; /* Reduced margin */
+}
+  
+.evaluation-table th, .evaluation-table td {
+    border: 1px solid #ddd;
+    padding: 8px; /* Reduced padding for compact table */
+    text-align: left;
+    font-size: 0.9rem; /* Smaller font size for table text */
+}
+  
+.evaluation-table th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+}
+  
+.evaluation-table td {
+    color: #555;
+}
+
+/* Feedback & Remarks section */
+.remarks p {
+    margin-bottom: 8px; /* Reduced space between remarks */
+    font-size: 0.9rem; /* Smaller font size for remarks */
+}
+  
+.remarks strong {
+    color: #333;
+}
+  
+/* Info section */
+.info p {
+    margin-bottom: 8px; /* Reduced space between info sections */
+    font-size: 0.9rem; /* Smaller font size for info */
+}
+  
+.info strong {
+    color: #333;
+}

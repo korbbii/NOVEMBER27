@@ -1,0 +1,49 @@
+      /* General layout */
+      body {
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(to bottom, #f0f4f8, #d9e8fc);
+        margin: 0;
+        padding: 0;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .title {
+        font-size: 2rem;
+        color: #333;
+        margin-top: 20px;
+        text-align: left;
+        margin-left: 30px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: auto; /* Rectangular width */
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .card .head h2 {
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+        color: #333;
+      }
+
+      /* Info data wrapper */
+      .info-data {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 30px;
+      }

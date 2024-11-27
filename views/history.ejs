@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History</title>
+  <link rel="stylesheet" href="/css/history.css">
+</head>
+<body>
+  <%- include('partials/studentSidebar') %>
+  <div class="sidebar">
+      <!-- Sidebar content goes here -->
+  </div>
+
+  <div class="container">
+    <!-- Flex Container for Question Form and Questionnaire Table -->
+    <div class="form-container">
+      <!-- Evaluation Questionnaire Table -->
+      <div class="questionnaire-table">
+        <h6>Submitted</h6>
+        <div class="legend">
+          <p>Rating Legend</p>
+          <p>5 = Strongly Agree, 4 = Agree, 3 = Uncertain, 2 = Disagree, 1 = Strongly Disagree</p>
+        </div>
+
+        <!-- Static Criteria and Questions -->
+        <div class="criteria-section">
+          <h4>Criteria 1</h4>
+          <div class="question-row">
+            <p>Question 1: The instructor communicates clearly.</p>
+            <div class="rating-options">
+              <label><input type="radio" name="question_1" value="5" disabled> 5</label>
+              <label><input type="radio" name="question_1" value="4" disabled> 4</label>
+              <label><input type="radio" name="question_1" value="3" disabled> 3</label>
+              <label><input type="radio" name="question_1" value="2" checked disabled> 2</label>
+              <label><input type="radio" name="question_1" value="1" disabled> 1</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="criteria-section">
+          <h4>Criteria 2</h4>
+          <div class="question-row">
+            <p>Question 2: The instructor provides timely feedback.</p>
+            <div class="rating-options">
+              <label><input type="radio" name="question_2" value="5" checked disabled> 5</label>
+              <label><input type="radio" name="question_2" value="4" disabled> 4</label>
+              <label><input type="radio" name="question_2" value="3" disabled> 3</label>
+              <label><input type="radio" name="question_2" value="2" disabled> 2</label>
+              <label><input type="radio" name="question_2" value="1" disabled> 1</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="criteria-section">
+          <h4>Criteria 3</h4>
+          <div class="question-row">
+            <p>Question 3: The instructor demonstrates subject knowledge.</p>
+            <div class="rating-options">
+              <label><input type="radio" name="question_3" value="5" disabled> 5</label>
+              <label><input type="radio" name="question_3" value="4" disabled> 4</label>
+              <label><input type="radio" name="question_3" value="3" disabled> 3</label>
+              <label><input type="radio" name="question_3" value="2" disabled> 2</label>
+              <label><input type="radio" name="question_3" value="1" checked disabled> 1</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="feedback-section">
+          <h3>Feedback</h3>
+          <textarea rows="5" disabled>The instructor is very knowledgeable and communicates effectively.</textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/studentdashboard.js"></script>
+  <script src="/js/user.js"></script>
+</body>
+</html>

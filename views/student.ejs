@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Dashboard</title>
-  <link rel="stylesheet" href="css/student.css">
-</head>
-<body>
-  <%- include('partials/studentSidebar') %>
-  <header>
-    <h1>Hello, <%= fname %>!</h1>
-  </header>
-  <main>
-    <section class="dashboard-content">
-      <h2>Student Dashboard</h2>
-      <p>Here you can view your subjects, assignments, and more.</p>
-    </section>
-  </main>
-  <script src="/js/studentdashboard.js"></script>
-  <script src="/js/user.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/student.css" />
+    <title>Student Dashboard</title>
+  </head>
+  <body>
+    <%- include('partials/studentSidebar') %>
+    <!-- MAIN -->
+    <main>
+      <h1 class="title">Hello, <%- fname -%></h1>
+      <div class="info-data">
+        <div class="card" onclick="location.href='/evaluate'" style="cursor: pointer;">
+          <h2>Evaluate</h2>
+        </div>
+        <div class="card" onclick="location.href='/history'" style="cursor: pointer;">
+          <h2>My Evaluation</h2>
+        </div>
+      </div>
+    </main> 
+    <!-- MAIN -->
+    <script src="/js/studentdashboard.js"></script>
+    <script src="/js/user.js"></script>
+  </body>
 </html>
